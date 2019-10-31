@@ -1,0 +1,37 @@
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+public class L1 {
+
+	public static void main(String[] args) {
+		List<Employee> al1 = new CopyOnWriteArrayList<>();
+
+		al1.add(new Employee(1, "Raj"));
+		al1.add(new Employee(7, "Baj"));
+		al1.add(new Employee(2, "Aaj"));
+		al1.add(new Employee(6, "Ray"));
+		al1.add(new Employee(1, "Bbb"));
+		
+		Collections.sort(al1, (o1,o2) -> (o1.id > o2.id) ? 1 : ((o1.id < o2.id) ? -1 : 0));		
+	    al1.removeIf(o1 -> (o1.id  == 2) );
+		al1.forEach(o -> System.out.println(o));
+	
+	}
+
+}
+
+class Employee {
+	int id;
+	String name;
+
+	public Employee(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
+	@Override
+	public String toString() {
+		return id + ":" + name;
+	}
+}
